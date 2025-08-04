@@ -6,16 +6,16 @@ function Header() {
     <Navbar bg="dark" variant="dark" expand="lg" sticky="top" className="shadow">
       <Container>
         <Navbar.Brand as={Link} to="/" className="fw-bold">
-          BASCZAGUI
+          BASCZAGUI S.A de C.V.
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/normas">Normas</Nav.Link> {/* Cambiado de Servicios a Normas */}
+            <Nav.Link as={Link} to="/normas">Normas</Nav.Link> {/* Asegúrate de que este enlace sea correcto */}
             <Nav.Link as={Link} to="/direccion">Dirección</Nav.Link>
             <Nav.Link as={Link} to="/contacto">Contacto</Nav.Link>
-            <Nav.Link as={Link} to="/acreditaciones">Acreditaciones</Nav.Link> {/* Nueva ruta */}
+            <Nav.Link as={Link} to="/acreditaciones">Acreditaciones</Nav.Link> {/* Asegúrate de que este enlace sea correcto */}
           </Nav>
         </Navbar.Collapse>
       </Container>
