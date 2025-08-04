@@ -12,10 +12,10 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/servicios">Servicios</Nav.Link>
+            <Nav.Link as={Link} to="/normas">Normas</Nav.Link> {/* Cambiado de Servicios a Normas */}
             <Nav.Link as={Link} to="/direccion">Dirección</Nav.Link>
             <Nav.Link as={Link} to="/contacto">Contacto</Nav.Link>
-            <Nav.Link as={Link} to="/normas">Normas</Nav.Link>
+            <Nav.Link as={Link} to="/acreditaciones">Acreditaciones</Nav.Link> {/* Nueva ruta */}
           </Nav>
         </Navbar.Collapse>
       </Container>
