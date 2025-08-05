@@ -17,6 +17,31 @@ function Contacto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const handleSubmit = (e) => {
+  e.preventDefault();
+  setError(null);
+
+  emailjs.send(
+    'service_328u5af',      // Reemplaza con tu Service ID
+    'template_78516xj',     // Reemplaza con tu Template ID
+    formData,
+    '3TS0sH7xzSZJQphbR'          // Reemplaza con tu User ID (Public Key)
+  )
+  .then(() => {
+    setSubmitted(true);
+    setFormData({
+      nombre: '',
+      email: '',
+      telefono: '',
+      mensaje: ''
+    });
+  })
+  .catch(err => {
+    console.error('Error al enviar:', err);
+    setError('Ocurrió un error al enviar el mensaje. Por favor inténtalo de nuevo.');
+  });
+};
+
     // Aquí iría la lógica para enviar el formulario
     console.log(formData);
     setSubmitted(true);
@@ -88,15 +113,15 @@ function Contacto() {
             <div className="mb-4">
               <p className="d-flex align-items-center gap-2">
                 <FaPhone className="text-primary" />
-                <span>81 1234 5678</span>
+                <span>(55) 10203040</span>
               </p>
               <p className="d-flex align-items-center gap-2">
                 <FaEnvelope className="text-primary" />
-                <span>contacto@basczagui.com</span>
+                <span>basczagui@gmail.com</span>
               </p>
               <p className="d-flex align-items-center gap-2">
                 <FaMapMarkerAlt className="text-primary" />
-                <span>Av. Tecnológico #123, Monterrey</span>
+                <span>Av. 414-A Numero 81, San Juan de Argagon VI Seccion</span>
               </p>
             </div>
             
@@ -104,10 +129,10 @@ function Contacto() {
               <h4 className="h5 fw-bold mb-3">Síguenos</h4>
               <div className="d-flex gap-3">
                 <a href="#" className="text-dark">
-                  <FaFacebook size={24} />
+                  <FaFacebook size={24} /> <p>@basczagui</p>
                 </a>
                 <a href="#" className="text-dark">
-                  <FaInstagram size={24} />
+                  <FaInstagram size={24} /><p>@basczagui</p>
                 </a>
               </div>
             </div>
@@ -119,3 +144,5 @@ function Contacto() {
 }
 
 export default Contacto;
+
+
