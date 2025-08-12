@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Container, Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram } from 'react-icons/fa';
+import emailjs from 'emailjs-com'; // Asegúrate de importar EmailJS
 
 function Contacto() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ function Contacto() {
     mensaje: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null); // Agrega estado para manejar errores
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
@@ -17,34 +19,27 @@ function Contacto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const handleSubmit = (e) => {
-  e.preventDefault();
-  setError(null);
+    setError(null); // Reinicia el error antes de enviar
 
-  emailjs.send(
-    'service_328u5af',      // Reemplaza con tu Service ID
-    'template_78516xj',     // Reemplaza con tu Template ID
-    formData,
-    '3TS0sH7xzSZJQphbR'          // Reemplaza con tu User ID (Public Key)
-  )
-  .then(() => {
-    setSubmitted(true);
-    setFormData({
-      nombre: '',
-      email: '',
-      telefono: '',
-      mensaje: ''
+    emailjs.send(
+      'service_328u5af',      // Reemplaza con tu Service ID
+      'template_78516xj',     // Reemplaza con tu Template ID
+      formData,
+      '3TS0sH7xzSZJQphbR'     // Reemplaza con tu User ID (Public Key)
+    )
+    .then(() => {
+      setSubmitted(true);
+      setFormData({
+        nombre: '',
+        email: '',
+        telefono: '',
+        mensaje: ''
+      });
+    })
+    .catch(err => {
+      console.error('Error al enviar:', err);
+      setError('Ocurrió un error al enviar el mensaje. Por favor inténtalo de nuevo.');
     });
-  })
-  .catch(err => {
-    console.error('Error al enviar:', err);
-    setError('Ocurrió un error al enviar el mensaje. Por favor inténtalo de nuevo.');
-  });
-};
-
-    // Aquí iría la lógica para enviar el formulario
-    console.log(formData);
-    setSubmitted(true);
   };
 
   return (
@@ -55,6 +50,7 @@ function Contacto() {
         <Col lg={6} className="mb-5 mb-lg-0">
           <Form onSubmit={handleSubmit} className="shadow-sm p-4 rounded">
             {submitted && <Alert variant="success">¡Gracias por tu mensaje!</Alert>}
+            {error && <Alert variant="danger">{error}</Alert>} {/* Muestra el error si existe */}
             
             <Form.Group className="mb-3">
               <Form.Label>Nombre completo</Form.Label>
@@ -144,5 +140,3 @@ function Contacto() {
 }
 
 export default Contacto;
-
-
